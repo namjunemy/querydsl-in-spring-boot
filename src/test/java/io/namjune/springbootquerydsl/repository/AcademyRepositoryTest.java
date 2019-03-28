@@ -14,13 +14,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AcademyRepositorySupportTest {
+public class AcademyRepositoryTest {
 
     @Autowired
     private AcademyRepository academyRepository;
-
-    @Autowired
-    private AcademyRepositorySupport academyRepositorySupport;
 
     @After
     public void tearDown() throws Exception {
@@ -36,7 +33,7 @@ public class AcademyRepositorySupportTest {
         academyRepository.save(new Academy(name, address));
 
         //when
-        List<Academy> result = academyRepositorySupport.findByName(name);
+        List<Academy> result = academyRepository.findByName(name);
 
         //then
         assertThat(result.size()).isEqualTo(1);
